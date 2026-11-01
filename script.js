@@ -968,6 +968,84 @@ document.addEventListener('DOMContentLoaded', () => {
   /* --------------------------------------------------------------------------
      12. INITIAL CONGRATULATIONS GREETING LOG
      -------------------------------------------------------------------------- */
+  /* --------------------------------------------------------------------------
+     12. HOME PAGE LOADING SCREEN (PRELOADER WITH DENTAL HUMOR & THOUGHTS)
+     -------------------------------------------------------------------------- */
+  const pagePreloader = document.getElementById('page-preloader');
+  const preloaderProgressFill = document.getElementById('preloader-progress-fill');
+  const preloaderPercent = document.getElementById('preloader-percent');
+  const preloaderThoughtText = document.getElementById('preloader-thought-text');
+  const preloaderThoughtIcon = document.getElementById('preloader-thought-icon');
+  const preloaderStatus = document.getElementById('preloader-status');
+
+  const loadingThoughts = [
+    { pct: 18, icon: '🪥', text: 'Sterilizing dental instruments & memorizing 32 teeth...', status: 'Preparing clinic tools...' },
+    { pct: 40, icon: '🩺', text: "Dentist Rule #1: You can never lie to Dr. Hima about flossing! 😂", status: 'Checking gums & cavities...' },
+    { pct: 65, icon: '☕', text: 'Surviving 5 years of clinic viva stress... Ceylon tea power!', status: 'Reviewing Peradeniya cases...' },
+    { pct: 88, icon: '💪', text: 'Tooth decay is officially trembling in fear! ✨', status: 'Final polish in progress...' },
+    { pct: 100, icon: '🎉', text: '100% Love & Pride loaded! Welcome, Doctor Hima! ❤️', status: 'Ready to Celebrate!' }
+  ];
+
+  if (pagePreloader) {
+    document.body.style.overflow = 'hidden';
+    let currentPct = 0;
+    let isPreloaderDone = false;
+    const loadDuration = 2400; // ~2.4 seconds snappy luxury experience
+    const intervalTime = 30;
+    const step = 100 / (loadDuration / intervalTime);
+
+    function finishPreloader() {
+      if (isPreloaderDone) return;
+      isPreloaderDone = true;
+      if (preloaderProgressFill) preloaderProgressFill.style.width = '100%';
+      if (preloaderPercent) preloaderPercent.textContent = '100%';
+      if (preloaderStatus) preloaderStatus.textContent = 'Welcome Doctor Hima! ❤️';
+
+      setTimeout(() => {
+        pagePreloader.classList.add('loaded');
+        document.body.style.overflow = '';
+        triggerConfetti(70, window.innerWidth / 2, window.innerHeight * 0.45);
+        playCelebrationChime();
+      }, 350);
+    }
+
+    const loadTimer = setInterval(() => {
+      currentPct = Math.min(100, currentPct + step + (Math.random() * 1.5));
+      const rounded = Math.floor(currentPct);
+
+      if (preloaderProgressFill) preloaderProgressFill.style.width = `${rounded}%`;
+      if (preloaderPercent) preloaderPercent.textContent = `${rounded}%`;
+
+      const matchedThought = loadingThoughts.find(t => rounded <= t.pct);
+      if (matchedThought) {
+        if (preloaderThoughtText && preloaderThoughtText.textContent !== matchedThought.text) {
+          preloaderThoughtText.style.opacity = '0.3';
+          setTimeout(() => {
+            preloaderThoughtText.textContent = matchedThought.text;
+            preloaderThoughtText.style.opacity = '1';
+          }, 100);
+        }
+        if (preloaderThoughtIcon && preloaderThoughtIcon.textContent !== matchedThought.icon) {
+          preloaderThoughtIcon.textContent = matchedThought.icon;
+        }
+        if (preloaderStatus && preloaderStatus.textContent !== matchedThought.status) {
+          preloaderStatus.textContent = matchedThought.status;
+        }
+      }
+
+      if (currentPct >= 100) {
+        clearInterval(loadTimer);
+        finishPreloader();
+      }
+    }, intervalTime);
+
+    // Fast-skip on tap / click
+    pagePreloader.addEventListener('click', () => {
+      clearInterval(loadTimer);
+      finishPreloader();
+    });
+  }
+
   console.log(
     '%c🦷 Heartiest Congratulations, Dr. Sidheek Fathima Hima! 🎓\n%cFinal Year Completed • Faculty of Dental Sciences, University of Peradeniya\nPresented with boundless love & pride by your sister, brother-in-law & family! ❤️✨\n🎶 Background music activates seamlessly on scroll.',
     'color: #D4AF37; font-size: 16px; font-weight: bold; font-family: serif;',

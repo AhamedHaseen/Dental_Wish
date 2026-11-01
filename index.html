@@ -27,6 +27,91 @@
 
 <body>
 
+  <!-- ==================== HOME PAGE LOADING SCREEN (PRELOADER) ==================== -->
+  <div id="page-preloader" class="page-preloader" role="status" aria-live="polite" aria-label="Loading celebration for Dr. Hima">
+    <div class="preloader-backdrop"></div>
+    <div class="preloader-container">
+
+      <!-- Animated Doctor Tooth Mascot with Glowing Pulse -->
+      <div class="preloader-mascot-wrapper">
+        <div class="preloader-pulse-ring"></div>
+        <div class="preloader-tooth-avatar">
+          <svg class="preloader-tooth-svg" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="loadToothGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="60%" stop-color="#E0F2FE"/>
+                <stop offset="100%" stop-color="#38BDF8"/>
+              </linearGradient>
+              <linearGradient id="loadGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FDE047"/>
+                <stop offset="50%" stop-color="#EAB308"/>
+                <stop offset="100%" stop-color="#CA8A04"/>
+              </linearGradient>
+            </defs>
+            <!-- Doctor Mortarboard Cap -->
+            <polygon points="50,6 88,22 50,38 12,22" fill="#0C4A6E" stroke="#38BDF8" stroke-width="2"/>
+            <rect x="36" y="28" width="28" height="12" rx="4" fill="#0369A1"/>
+            <!-- Golden Cap Tassel -->
+            <path d="M50,22 Q68,26 78,40" stroke="url(#loadGoldGrad)" stroke-width="2.5" fill="none"/>
+            <circle cx="78" cy="42" r="3" fill="#FDE047"/>
+            <!-- Smiling Doctor Tooth Body -->
+            <path d="M50,42 C30,42 18,54 20,74 C21,83 25,98 38,104 C44,106 46,98 50,92 C54,98 56,106 62,104 C75,98 79,83 80,74 C82,54 70,42 50,42 Z" fill="url(#loadToothGrad)" stroke="#38BDF8" stroke-width="2.5"/>
+            <!-- Eyes -->
+            <ellipse cx="38" cy="65" rx="3.5" ry="5" fill="#0C4A6E"/>
+            <ellipse cx="62" cy="65" rx="3.5" ry="5" fill="#0C4A6E"/>
+            <circle cx="36.5" cy="63" r="1.5" fill="#FFFFFF"/>
+            <circle cx="60.5" cy="63" r="1.5" fill="#FFFFFF"/>
+            <!-- Sweet Smile -->
+            <path d="M42,75 Q50,83 58,75" stroke="#0C4A6E" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <!-- Rosy Cheeks -->
+            <ellipse cx="32" cy="73" rx="4" ry="2.5" fill="#F472B6" opacity="0.6"/>
+            <ellipse cx="68" cy="73" rx="4" ry="2.5" fill="#F472B6" opacity="0.6"/>
+            <!-- Stethoscope -->
+            <path d="M30,80 Q50,96 70,80" stroke="#0284C7" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="50" cy="94" r="3.5" fill="url(#loadGoldGrad)"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- University Accolade Badge -->
+      <div class="preloader-badge">
+        <span>Faculty of Dental Sciences &bull; Univ. of Peradeniya</span>
+      </div>
+
+      <!-- Honoree Heading -->
+      <h1 class="preloader-title">
+        Dr. Sidheek Fathima Hima
+      </h1>
+
+      <p class="preloader-sub">
+        Final Year BDS Conquered &bull; Stepping Out Into Her Calling 🦷✨
+      </p>
+
+      <!-- Witty Joke / Dental Thought Status Line -->
+      <div class="preloader-thought-box">
+        <span class="preloader-thought-icon" id="preloader-thought-icon">🪥</span>
+        <span class="preloader-thought-text" id="preloader-thought-text">Sterilizing instruments & memorizing 32 teeth...</span>
+      </div>
+
+      <!-- Luxury Sky-Blue & Gold Progress Bar -->
+      <div class="preloader-progress-wrap">
+        <div class="preloader-progress-track">
+          <div class="preloader-progress-fill" id="preloader-progress-fill"></div>
+        </div>
+        <div class="preloader-progress-labels">
+          <span class="preloader-status" id="preloader-status">Loading smiles...</span>
+          <span class="preloader-percent" id="preloader-percent">0%</span>
+        </div>
+      </div>
+
+      <div class="preloader-hint">
+        <span>Click anywhere to open immediately 💫</span>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Background Decorative Canvas for Floating Golden Particles & Confetti -->
   <canvas id="ambient-canvas" class="ambient-canvas" aria-hidden="true"></canvas>
   <canvas id="celebration-canvas" class="celebration-canvas" aria-hidden="true"></canvas>

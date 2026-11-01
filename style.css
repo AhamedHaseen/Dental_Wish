@@ -238,6 +238,200 @@ body {
 /* --------------------------------------------------------------------------
    NAVIGATION BAR & AUDIO CONTROL
    -------------------------------------------------------------------------- */
+/* ==========================================================================
+   HOME PAGE PRELOADER / LOADING SCREEN
+   ========================================================================== */
+.page-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: radial-gradient(circle at 50% 30%, #0C4A6E 0%, #082F49 50%, #0B192C 100%);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.7s ease,
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.06);
+  pointer-events: none;
+}
+
+.preloader-backdrop {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(56, 189, 248, 0.12) 1px, transparent 1px),
+    radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+  pointer-events: none;
+}
+
+.preloader-container {
+  position: relative;
+  z-index: 10;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Mascot Animation */
+.preloader-mascot-wrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-pulse-ring {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 2px dashed rgba(56, 189, 248, 0.5);
+  animation: rotatePreloaderRing 12s linear infinite;
+}
+
+@keyframes rotatePreloaderRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.preloader-tooth-avatar {
+  width: 100%;
+  height: 100%;
+  animation: preloaderBounce 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 10px 25px rgba(56, 189, 248, 0.4));
+}
+
+@keyframes preloaderBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.preloader-tooth-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Badge & Headings */
+.preloader-badge {
+  display: inline-block;
+  padding: 5px 16px;
+  background: rgba(14, 165, 233, 0.18);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  border-radius: 999px;
+  color: #7DD3FC;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.preloader-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.preloader-sub {
+  font-size: 0.95rem;
+  color: #BAE6FD;
+  margin-bottom: 24px;
+}
+
+/* Thought / Joke Bubble */
+.preloader-thought-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 999px;
+  padding: 8px 20px;
+  margin-bottom: 26px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  min-height: 42px;
+}
+
+.preloader-thought-icon {
+  font-size: 1.2rem;
+  animation: pulseGlow 1.8s infinite;
+}
+
+.preloader-thought-text {
+  font-family: var(--font-classical);
+  font-size: 1.02rem;
+  color: #F0F9FF;
+  font-style: italic;
+  font-weight: 500;
+  transition: opacity 0.25s ease;
+}
+
+/* Progress Bar */
+.preloader-progress-wrap {
+  width: 100%;
+  max-width: 380px;
+  margin-bottom: 18px;
+}
+
+.preloader-progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.preloader-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #0284C7 0%, #38BDF8 50%, #FDE047 100%);
+  border-radius: 999px;
+  transition: width 0.12s linear;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.8);
+}
+
+.preloader-progress-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #7DD3FC;
+  font-weight: 600;
+}
+
+.preloader-percent {
+  font-family: monospace;
+  font-size: 0.88rem;
+  color: #FDE047;
+}
+
+.preloader-hint {
+  font-size: 0.76rem;
+  color: rgba(186, 230, 253, 0.65);
+  letter-spacing: 0.5px;
+}
+
 .luxury-navbar {
   position: fixed;
   top: 0;
